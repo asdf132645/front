@@ -1,7 +1,5 @@
 <template>
-  <div>
-    border
-  </div>
+  <div>edit</div>
 </template>
 
 <script>

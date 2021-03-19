@@ -1,4 +1,4 @@
-import store from '@/store/index';
+// import store from '@/store/index';
 
 export function setInterceptors(instance) {
   // Add a request interceptor
@@ -6,8 +6,6 @@ export function setInterceptors(instance) {
     function(config) {
       // Do something before request is sent
       //요청이 전송되기 전에 작업 수행
-      // console.log(config);
-      config.headers.Authorization = store.state.token;
       return config;
     },
     function(error) {
