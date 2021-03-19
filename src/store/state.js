@@ -1,5 +1,4 @@
 export default {
-  state: {
-    accessToken: null,
-  },
+  accessToken: null,
+  user: '',
 };

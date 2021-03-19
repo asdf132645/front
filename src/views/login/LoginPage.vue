@@ -1,6 +1,7 @@
 <template>
   <div>
     login
+    {{ this.$store.state.accessToken }}
   </div>
 </template>
 
