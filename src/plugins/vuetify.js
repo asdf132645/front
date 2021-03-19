@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib/framework';
 
-Vue.use(Vuetify);
+import '@mdi/font/css/materialdesignicons.css'; // 아이콘 불러오기
+import '@/assets/scss/_index.scss'; // _index.scss를 한번만 불러오면 자동으로 css로 컴파일 해줌
 
-export default new Vuetify({});
+Vue.use(Vuetify);
+export default new Vuetify({ icons: { iconfont: 'mdi' } });
