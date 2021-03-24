@@ -1,11 +1,20 @@
 <template>
-  <div>2</div>
+  <div class="contents">
+    <form @swubmit.prevent="submitForm">
+      <div></div>
+    </form>
+  </div>
 </template>
 
 <script>
-import AppHeader from '';
+// import AppHeader from '';
 
-export default {};
+export default {
+  // async submitForm(){
+  //   try{
+  //   }
+  // }
+};
 </script>
 
 <style></style>

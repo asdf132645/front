@@ -23,8 +23,9 @@ export default {
     LoginComponents3,
   },
   created() {
-    // if (sessionStorage.getItem('routes') === 'a') {
-    // }
+    if (sessionStorage.getItem('routes') === 'a') {
+      this.type = 'LoginComponents1';
+    }
   },
 };
 </script>

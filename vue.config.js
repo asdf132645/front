@@ -4,7 +4,10 @@ module.exports = {
   },
   css: {
     loaderOptions: {
-      scss: { prependData: ` @import "@/assets/scss/variables.scss"; ` },
+      scss: {
+        sourceMap: true,
+        additionalData: ` @import "@/assets/scss/variables.scss"; `,
+      },
     },
   },
   transpileDependencies: ['vuetify'],

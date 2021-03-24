@@ -34,4 +34,15 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
+// if (sessionStorage.getItem('routes') === 'a') {
+//   addrouteE(...defaultRoutes);
+//   console.log(router.options.routes);
+// } else if (sessionStorage.getItem('routes') === 'b') {
+//   addrouteE(...loginRoutes);
+// }
+
+// function addrouteE(defaultRoutes) {
+//   router.addRoute(defaultRoutes);
+// }
+
 export default router;
