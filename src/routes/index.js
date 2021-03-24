@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import borderRoutes from './detachPage/border';
-import defaultRoutes from './detachPage/default';
+// import defaultRoutes from './detachPage/default';
 import loginRoutes from './detachPage/login';
 import routepath from '@/utils/routes';
+// import store from '@/store/index';
 
 Vue.use(VueRouter);
 
@@ -15,7 +16,7 @@ const router = new VueRouter({
       redirect: '/login',
     },
     ...borderRoutes,
-    ...defaultRoutes,
+    // ...defaultRoutes,
     ...loginRoutes,
   ],
 });

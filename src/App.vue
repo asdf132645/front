@@ -1,19 +1,65 @@
 <template>
-  <div>
-    <app-header></app-header>
-    <router-view></router-view>
-    <app-footer></app-footer>
+  <div id="app">
+    <component :layouts="layouts" :is="currentView">
+      <slot />
+    </component>
   </div>
 </template>
 
 <script>
-import AppHeader from '@/components/common/AppHeader.vue';
-import AppFooter from '@/components/common/AppFooter.vue';
+import TheLayout from '@/layouts/TheLayout';
+import TheLayout2 from '@/layouts/TheLayout2';
+import TheLayout3 from '@/layouts/TheLayout3';
+import defaultRoutes from '@/routes/detachPage/default';
+import loginRoutes from '@/routes/detachPage/login';
 
 export default {
+  data: function() {
+    return {
+      currentView: '',
+      layouts: '',
+    };
+  },
   components: {
-    AppHeader,
-    AppFooter,
+    TheLayout,
+    TheLayout2,
+    TheLayout3,
+  },
+  methods: {
+    addrouteE(defaultRoutes) {
+      let vm = this;
+      vm.$router.addRoute(defaultRoutes);
+    },
+    getCurrentView() {
+      this.$axios
+        .get('/layout.json')
+        .then(res => {
+          this.layouts = res.data.layouts;
+          if (this.layouts == 'a') {
+            this.currentView = 'TheLayout';
+            sessionStorage.setItem('routes', this.layouts);
+            // this.$router.addroute(...defaultRoutes);
+          } else if (this.layouts === 'b') {
+            this.currentView = 'TheLayout2';
+            // this.$router.addroute(...loginRoutes);
+          } else if (this.layouts === 'c') {
+            this.currentView = 'TheLayout3';
+          }
+          this.$store.commit('setLayouts', this.currentView);
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+    },
+  },
+  created() {
+    this.getCurrentView();
+    if (sessionStorage.getItem('routes') === 'a') {
+      this.addrouteE(...defaultRoutes);
+      console.log(this.$router);
+    } else if (sessionStorage.getItem('routes') === 'b') {
+      this.addrouteE(...loginRoutes);
+    }
   },
 };
 </script>
