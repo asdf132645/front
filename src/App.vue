@@ -11,7 +11,7 @@ import TheLayout from '@/layouts/TheLayout';
 import TheLayout2 from '@/layouts/TheLayout2';
 import TheLayout3 from '@/layouts/TheLayout3';
 import defaultRoutes from '@/routes/detachPage/default';
-// import loginRoutes from '@/routes/detachPage/login';
+import loginRoutes from '@/routes/detachPage/login';
 
 export default {
   data: function() {
@@ -25,6 +25,14 @@ export default {
     TheLayout2,
     TheLayout3,
   },
+  computed: {
+    reExpiresAt() {
+      return this.$store.getters.reExpiresAt;
+    },
+    reToken() {
+      return this.$store.getters.reToken;
+    },
+  },
   methods: {
     addrouteE(defaultRoutes) {
       this.$router.addRoutes(defaultRoutes);
@@ -37,7 +45,7 @@ export default {
           if (this.layouts == 'a') {
             this.currentView = 'TheLayout';
             sessionStorage.setItem('routes', this.layouts);
-            console.log(process.env);
+            // console.log(process.env);
             // this.$router.addroute(...defaultRoutes);
           } else if (this.layouts === 'b') {
             this.currentView = 'TheLayout2';
@@ -55,8 +63,7 @@ export default {
   created() {
     this.getCurrentView();
     if (sessionStorage.getItem('routes') === 'a') {
-      this.addrouteE([...defaultRoutes]);
-      console.log(this.$router.options);
+      this.addrouteE([...loginRoutes]);
     } else if (sessionStorage.getItem('routes') === 'b') {
       this.addrouteE([...defaultRoutes]);
     }

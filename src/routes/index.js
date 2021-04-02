@@ -1,8 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import borderRoutes from './detachPage/border';
-// import defaultRoutes from './detachPage/default';
+import defaultRoutes from './detachPage/default';
 import loginRoutes from './detachPage/login';
+// import { reqPost } from '@/api/common/request';
+// import { userapi } from '@/api/common/api';
+// import { rescode } from '@/api/common/consts';
 import routepath from '@/utils/routes';
 // import store from '@/store/index';
 
@@ -16,7 +19,7 @@ const router = new VueRouter({
       redirect: '/login',
     },
     ...borderRoutes,
-    // ...defaultRoutes,
+    ...defaultRoutes,
     ...loginRoutes,
   ],
 });
@@ -33,16 +36,5 @@ router.beforeEach((to, from, next) => {
   console.log(to);
   next();
 });
-
-// if (sessionStorage.getItem('routes') === 'a') {
-//   addrouteE(...defaultRoutes);
-//   console.log(router.options.routes);
-// } else if (sessionStorage.getItem('routes') === 'b') {
-//   addrouteE(...loginRoutes);
-// }
-
-// function addrouteE(defaultRoutes) {
-//   router.addRoute(defaultRoutes);
-// }
 
 export default router;
