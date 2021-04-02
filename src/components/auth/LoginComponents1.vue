@@ -41,23 +41,13 @@
 </template>
 
 <script>
-import { userapi } from '@/api/common/api';
-import { reqPost, authReqPost } from '@/api/common/request';
+import mixin from '@/mixins/ListMixin';
 
 export default {
   data() {
-    return {
-      // form values
-      username: '',
-      password: '',
-      // log
-      logMessage: '',
-      phoneNumber: '',
-      fullName: '',
-      findName: '',
-      email: '',
-    };
+    return {};
   },
+  mixins: [mixin],
   computed: {
     authToken() {
       return this.$store.getters.authToken;
@@ -90,23 +80,29 @@ export default {
         fullName: this.fullName,
         phoneNumber: this.phoneNumber,
       };
-      reqPost(userapi.base, userapi.findUsername, '', userData, data => {
-        console.log(data.data.usernames);
-        this.findName = data.data.usernames;
-      });
+      this.$reqPost(
+        this.$userApi.base,
+        this.$userApi.findUsername,
+        '',
+        userData,
+        data => {
+          console.log(data.data.usernames);
+          this.findName = data.data.usernames;
+        },
+      );
     },
     userInfoCh() {
       const userData = {
         email: this.email,
         fullName: this.fullName,
       };
-      authReqPost(
-        userapi.base,
-        userapi.changeInfo,
+      this.$authReqPost(
+        this.$userApi.base,
+        this.$userApi.changeInfo,
         this.authToken,
         userData,
         data => {
-          console.log(data + this.authToken);
+          console.log(data);
         },
       );
     },

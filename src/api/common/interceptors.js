@@ -1,7 +1,5 @@
 import store from '@/store/index';
-// import jwt_decode from 'jwt-decode';
 import { validateTimeRf, validateTimeAt, getAtRtToken } from '@/api/auth';
-import axios from 'axios';
 
 export function setInterceptors(instance) {
   // Add a request interceptor
@@ -26,7 +24,7 @@ export function setInterceptors(instance) {
               };
               store.dispatch('DORESETTOKEN', userData);
               // sessionStorage.setItem('role', res.data.data.role);
-              axios.defaults.headers.common[
+              this.$axios.defaults.headers.common[
                 'accessToken'
               ] = sessionStorage.getItem('token');
               //실패했던 요청을 다시 수행

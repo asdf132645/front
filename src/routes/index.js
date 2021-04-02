@@ -3,11 +3,7 @@ import VueRouter from 'vue-router';
 import borderRoutes from './detachPage/border';
 import defaultRoutes from './detachPage/default';
 import loginRoutes from './detachPage/login';
-// import { reqPost } from '@/api/common/request';
-// import { userapi } from '@/api/common/api';
-// import { rescode } from '@/api/common/consts';
 import routepath from '@/utils/routes';
-// import store from '@/store/index';
 
 Vue.use(VueRouter);
 
