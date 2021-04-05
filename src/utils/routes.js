@@ -5,5 +5,6 @@ export default {
   post: '/post/:id',
   border: '/border',
   main: '/main',
+  main2: '/main2',
   borderAdd: 'borderAdd',
 };

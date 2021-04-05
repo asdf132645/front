@@ -1,35 +1,25 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import borderRoutes from './detachPage/border';
 import defaultRoutes from './detachPage/default';
-import loginRoutes from './detachPage/login';
-// import routepath from '@/utils/routes';
-import loginRoutes2 from '@/routes/detachPage/login2';
+import aType from './detachPage/aType';
+import bType from '@/routes/detachPage/bType';
+import cType from '@/routes/detachPage/cType';
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: 'history',
-  routes: [
-    {
-      path: '/',
-      redirect: '/login',
-    },
-    ...borderRoutes,
-    ...defaultRoutes,
-    ...loginRoutes,
-  ],
+  routes: [...defaultRoutes],
 });
 
-router.afterEach((to, from, next) => {
+router.afterEach(() => {
   if (sessionStorage.getItem('routes') === 'a') {
-    router.addRoutes([...loginRoutes2]);
-    return to.fullPath;
+    router.addRoutes([...aType]);
   } else if (sessionStorage.getItem('routes') === 'b') {
-    router.addRoutes([...defaultRoutes]);
+    router.addRoutes([...bType]);
+  } else if (sessionStorage.getItem('routes') === 'c') {
+    router.addRoutes([...cType]);
   }
-  console.log(to);
-  next();
 });
 
 export default router;
