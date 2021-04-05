@@ -1,10 +1,11 @@
 export default {
-  login: '/login', //로그인
-  login2: '/login2',
+  login: '/auth/login', //로그인
+  signup: '/auth/signup', //회원가입
+  mypage: '/auth/mypage',
   //---------- border --------//
   post: '/post/:id',
   border: '/border',
   main: '/main',
-  main2: '/main2',
+  findidpws: '/findidpws',
   borderAdd: 'borderAdd',
 };

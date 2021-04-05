@@ -1,14 +1,15 @@
 <template>
   <div>
-    <Singup />
+    <FindIdPsw />
   </div>
 </template>
 
 <script>
-import Singup from '@/components/auth/Singup';
+import FindIdPsw from '@/components/type1/auth/FindIdPsw';
+
 export default {
   components: {
-    Singup,
+    FindIdPsw,
   },
 };
 </script>

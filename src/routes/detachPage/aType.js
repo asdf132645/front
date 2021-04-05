@@ -7,28 +7,44 @@ export default [
   },
   {
     path: routepath.main,
-    component: () => import('@/views/default/MainPage.vue'),
+    component: () => import('@/views/type1/default/MainPage.vue'),
+    meta: {
+      auth: true,
+    },
   },
-  //로그인
+  {
+    path: '*',
+    component: () => import('@/views/default/NotFoundPage.vue'),
+  },
+  {
+    path: routepath.findidpws,
+    component: () => import('@/views/type1/auth/FindIdPswPage.vue'),
+  },
+  //로그인,회원가입,마이페이지
   {
     path: routepath.login,
-    component: () => import('@/views/auth'),
+    component: () => import('@/views/type1/auth'),
     redirect: '/auth/login',
     children: [
       {
-        path: '/auth/login',
-        component: () => import('@/views/auth/LoginPage'),
+        path: routepath.login,
+        component: () => import('@/views/type1/auth/LoginPage'),
         meta: {
           auth: false,
-          type: '1',
         },
       },
       {
-        path: '/auth/signup',
-        component: () => import('@/views/auth/SignupPage'),
+        path: routepath.signup,
+        component: () => import('@/views/type1/auth/SignupPage'),
         meta: {
           auth: false,
-          type: '2',
+        },
+      },
+      {
+        path: routepath.mypage,
+        component: () => import('@/views/type1/auth/MyInfoPage'),
+        meta: {
+          auth: true,
         },
       },
     ],
@@ -36,28 +52,28 @@ export default [
   //게시판
   {
     path: routepath.border,
-    component: () => import('@/views/border'),
+    component: () => import('@/views/type1/border'),
     redirect: '/border/borderList',
     children: [
       {
         path: 'borderList',
-        component: () => import('@/views/border/BorderPage'),
+        component: () => import('@/views/type1/border/BorderPage'),
         meta: {
           auth: true,
         },
       },
       {
         path: '/post/:id',
-        component: () => import('@/views/border/BorderEditPage'),
+        component: () => import('@/views/type1/border/BorderEditPage'),
         meta: {
-          auth: false,
+          auth: true,
         },
       },
       {
         path: routepath.borderAdd,
-        component: () => import('@/views/border/BorderAddPage'),
+        component: () => import('@/views/type1/border/BorderAddPage'),
         meta: {
-          auth: false,
+          auth: true,
         },
       },
     ],

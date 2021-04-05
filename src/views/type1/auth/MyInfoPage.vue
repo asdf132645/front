@@ -1,15 +1,14 @@
 <template>
   <div>
-    <border-add></border-add>
+    <MyInfo />
   </div>
 </template>
 
 <script>
-import BorderAdd from '@/components/border/BorderAdd';
-
+import MyInfo from '@/components/type1/auth/MyInfo.vue';
 export default {
   components: {
-    BorderAdd,
+    MyInfo,
   },
 };
 </script>

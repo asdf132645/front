@@ -11,6 +11,7 @@ const loginUser = async userData => {
   return await instance.post('/users/v1/tablenjoy/user/auth/login', userData);
 };
 
+//토큰 만료일 계산
 const validateTimeAt = () => {
   //세션스토리지에서 액세스토큰을 가져온다.
   const accessToken = sessionStorage.getItem('token');
@@ -29,6 +30,7 @@ const validateTimeAt = () => {
   }
 };
 
+//리프레쉬 토큰 만료일 계산
 const validateTimeRf = () => {
   //세션스토리지에서 액세스토큰을 가져온다.
   const refreshToken = localStorage.getItem('refreshToken');
@@ -56,15 +58,10 @@ const getAtRtToken = () =>
     },
   );
 
-// const testToken = (base, url, token, body, callback) => {
-//   authReqPost(base, url, token, body, callback);
-// };
-
 export {
   loginUser,
   registerUser,
   validateTimeAt,
   validateTimeRf,
   getAtRtToken,
-  // testToken,
 };

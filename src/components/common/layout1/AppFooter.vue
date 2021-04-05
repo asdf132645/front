@@ -1,6 +1,6 @@
 <template>
   <div>
-    footer
+    type1footer
   </div>
 </template>
 
