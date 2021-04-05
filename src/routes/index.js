@@ -3,7 +3,8 @@ import VueRouter from 'vue-router';
 import borderRoutes from './detachPage/border';
 import defaultRoutes from './detachPage/default';
 import loginRoutes from './detachPage/login';
-import routepath from '@/utils/routes';
+// import routepath from '@/utils/routes';
+import loginRoutes2 from '@/routes/detachPage/login2';
 
 Vue.use(VueRouter);
 
@@ -20,14 +21,12 @@ const router = new VueRouter({
   ],
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.meta.auth) {
-    console.log('인증이 필요합니다.');
-    next({
-      path: routepath.login,
-      query: { redirect: to.fullPath },
-    });
-    return;
+router.afterEach((to, from, next) => {
+  if (sessionStorage.getItem('routes') === 'a') {
+    router.addRoutes([...loginRoutes2]);
+    return to.fullPath;
+  } else if (sessionStorage.getItem('routes') === 'b') {
+    router.addRoutes([...defaultRoutes]);
   }
   console.log(to);
   next();

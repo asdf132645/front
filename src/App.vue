@@ -10,8 +10,6 @@
 import TheLayout from '@/layouts/TheLayout';
 import TheLayout2 from '@/layouts/TheLayout2';
 import TheLayout3 from '@/layouts/TheLayout3';
-import defaultRoutes from '@/routes/detachPage/default';
-import loginRoutes from '@/routes/detachPage/login';
 
 export default {
   data: function() {
@@ -34,9 +32,6 @@ export default {
     },
   },
   methods: {
-    addrouteE(defaultRoutes) {
-      this.$router.addRoutes(defaultRoutes);
-    },
     getCurrentView() {
       this.$axios
         .get('/layout.json')
@@ -45,11 +40,8 @@ export default {
           if (this.layouts == 'a') {
             this.currentView = 'TheLayout';
             sessionStorage.setItem('routes', this.layouts);
-            // console.log(process.env);
-            // this.$router.addroute(...defaultRoutes);
           } else if (this.layouts === 'b') {
             this.currentView = 'TheLayout2';
-            // this.$router.addroute(...loginRoutes);
           } else if (this.layouts === 'c') {
             this.currentView = 'TheLayout3';
           }
@@ -62,11 +54,6 @@ export default {
   },
   created() {
     this.getCurrentView();
-    if (sessionStorage.getItem('routes') === 'a') {
-      this.addrouteE([...loginRoutes]);
-    } else if (sessionStorage.getItem('routes') === 'b') {
-      this.addrouteE([...defaultRoutes]);
-    }
   },
 };
 </script>

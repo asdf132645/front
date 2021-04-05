@@ -1,12 +1,11 @@
 <template>
   <div>
-    <div>ss</div>
-    <LoginComponents1 />
+    <LoginComponents3 />
   </div>
 </template>
 
 <script>
-import LoginComponents1 from '@/components/auth/LoginComponents1';
+import LoginComponents3 from '@/components/auth/LoginComponents3.vue';
 export default {
   data() {
     return {
@@ -14,8 +13,9 @@ export default {
     };
   },
   components: {
-    LoginComponents1,
+    LoginComponents3,
   },
+  created() {},
 };
 </script>
 
