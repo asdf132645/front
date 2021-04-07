@@ -5,14 +5,14 @@ export default {
     let { data } = await loginUser(userData);
     let val = data.data;
     let authData = {
-      token: val.access.token,
+      token: ' Bearer ' + val.access.token,
       expiresIn: val.access.expiresIn,
       expiresAt: val.access.expiresIn,
       refresh: val.refresh.token,
       refreshexpiresIn: val.refresh.expiresIn,
       refreshexpiresAt: val.refresh.expiresIn,
     };
-    console.log(authData);
+    // console.log(authData);
     commit('setAuth', authData);
     commit('setUsername', userData.username);
     sessionStorage.setItem('token', ' Bearer ' + val.access.token);

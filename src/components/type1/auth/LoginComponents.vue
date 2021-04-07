@@ -13,11 +13,6 @@
         <button type="submit" class="btn">
           로그인
         </button>
-        <div>
-          <label for="email">email:</label>
-          <input id="email" type="text" v-model="email" />
-        </div>
-        <div @click="userInfoCh">사용자 정보 변경</div>
       </form>
       <p class="log">{{ logMessage }}</p>
     </div>
@@ -59,21 +54,6 @@ export default {
     initForm() {
       this.username = '';
       this.password = '';
-    },
-    userInfoCh() {
-      const userData = {
-        email: this.email,
-        fullName: this.fullName,
-      };
-      this.$authReqPost(
-        this.$userApi.base,
-        this.$userApi.changeInfo,
-        this.authToken,
-        userData,
-        data => {
-          console.log(data);
-        },
-      );
     },
   },
 };

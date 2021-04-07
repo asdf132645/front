@@ -9,6 +9,8 @@
         <a href="javascript:;" @click="logoutUser" class="logout-button">
           Logout
         </a>
+        |
+        <router-link to="/auth/mypage">mypage</router-link>
       </template>
       <template v-else>
         <router-link to="/auth/signup">회원가입</router-link> |
@@ -35,7 +37,7 @@ export default {
       this.$store.commit('clearToken');
       sessionStorage.clear();
       localStorage.clear();
-      this.$router.push('/login');
+      this.$router.push('/auth/login');
     },
   },
 };

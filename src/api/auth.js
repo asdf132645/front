@@ -41,7 +41,7 @@ const validateTimeRf = () => {
   var now = new Date().getTime();
   //변환된 값 비교
   if (now < exp) {
-    console.log('at is valid token');
+    console.log(now + '<br>' + exp);
     return true;
   } else {
     console.log('at is invalid');
@@ -52,9 +52,9 @@ const validateTimeRf = () => {
 const getAtRtToken = () =>
   instance.post(
     '/users/v1/tablenjoy/user/auth/refresh',
-    { refreshToken: sessionStorage.getItem('refreshToken') },
+    { refreshToken: localStorage.getItem('refreshToken') },
     {
-      headers: { Authorization: sessionStorage.getItem('refreshToken') },
+      headers: { Authorization: localStorage.getItem('refreshToken') },
     },
   );
 
